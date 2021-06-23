@@ -12,9 +12,12 @@ delete constituent entities:
 edit constituent entities:
   title: 'Edit Constituent entities'
 
-view published constituent entities:
+view constituent entities:
   title: 'View published Constituent entities'
 
-view unpublished constituent entities:
-  title: 'View unpublished Constituent entities'
+# view published constituent entities:
+#   title: 'View published Constituent entities'
+
+# view unpublished constituent entities:
+#   title: 'View unpublished Constituent entities'
 

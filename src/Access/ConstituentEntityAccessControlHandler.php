@@ -24,12 +24,12 @@ class ConstituentEntityAccessControlHandler extends EntityAccessControlHandler {
 
       case 'view':
 
-        if (!$entity->isPublished()) {
-          return AccessResult::allowedIfHasPermission($account, 'view unpublished constituent entities');
-        }
+        // if (!$entity->isPublished()) {
+        //   return AccessResult::allowedIfHasPermission($account, 'view unpublished constituent entities');
+        // }
 
 
-        return AccessResult::allowedIfHasPermission($account, 'view published constituent entities');
+        return AccessResult::allowedIfHasPermission($account, 'view constituent entities');
 
       case 'update':
 
