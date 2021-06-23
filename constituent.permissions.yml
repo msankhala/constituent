@@ -1,0 +1,20 @@
+add constituent entities:
+  title: 'Create new Constituent entities'
+
+administer constituent entities:
+  title: 'Administer Constituent entities'
+  description: 'Allow to access the administration form to configure Constituent entities.'
+  restrict access: true
+
+delete constituent entities:
+  title: 'Delete Constituent entities'
+
+edit constituent entities:
+  title: 'Edit Constituent entities'
+
+view published constituent entities:
+  title: 'View published Constituent entities'
+
+view unpublished constituent entities:
+  title: 'View unpublished Constituent entities'
+

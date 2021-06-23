@@ -1,0 +1,14 @@
+
+# Constituent menu items definition
+entity.constituent.collection:
+  title: 'Constituent list'
+  route_name: entity.constituent.collection
+  description: 'List Constituent entities'
+  parent: system.admin_structure
+  weight: 100
+
+constituent.admin.structure.settings:
+  title: 'Constituent settings'
+  description: 'Configure Constituent entities'
+  route_name: constituent.settings
+  parent: system.admin_structure

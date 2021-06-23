@@ -1,0 +1,21 @@
+# Constituent routing definition
+constituent.settings_tab:
+  route_name: constituent.settings
+  title: 'Settings'
+  base_route: constituent.settings
+
+entity.constituent.canonical:
+  route_name: entity.constituent.canonical
+  base_route: entity.constituent.canonical
+  title: 'View'
+
+entity.constituent.edit_form:
+  route_name: entity.constituent.edit_form
+  base_route: entity.constituent.canonical
+  title: 'Edit'
+
+entity.constituent.delete_form:
+  route_name:  entity.constituent.delete_form
+  base_route:  entity.constituent.canonical
+  title: Delete
+  weight: 10

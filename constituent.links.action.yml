@@ -1,0 +1,5 @@
+entity.constituent.add_form:
+  route_name: entity.constituent.add_form
+  title: 'Add Constituent'
+  appears_on:
+    - entity.constituent.collection

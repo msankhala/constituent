@@ -1,0 +1,7 @@
+name: 'Constituent'
+type: module
+description: 'Provides Constituent entity and operations related to it.'
+core: 8.x
+package: 'Custom'
+dependencies:
+  - views

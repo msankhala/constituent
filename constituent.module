@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains constituent.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function constituent_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the constituent module.
+    case 'help.page.constituent':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides Constituent entity and operations related to it.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function constituent_theme() {
+  return [
+    'constituent' => [
+      'render element' => 'children',
+    ],
+  ];
+}
