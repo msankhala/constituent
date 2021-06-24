@@ -2,10 +2,11 @@
 
 namespace Drupal\constituent\Entity;
 
-use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityChangedTrait;
+use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\EntityTypeInterface;
+use CommerceGuys\Addressing\AddressFormat\FieldOverride;
 
 /**
  * Defines the Constituent entity.
@@ -47,7 +48,7 @@ use Drupal\Core\Entity\EntityTypeInterface;
  *     "add-form" = "/admin/constituents/constituent/add",
  *     "edit-form" = "/admin/constituents/constituent/{constituent}/edit",
  *     "delete-form" = "/admin/constituents/constituent/{constituent}/delete",
- *     "collection" = "/admin/constituents/constituent",
+ *     "collection" = "/admin/constituents",
  *   },
  *   field_ui_base_route = "constituent.settings"
  * )
@@ -62,7 +63,6 @@ class ConstituentEntity extends ContentEntityBase implements ConstituentEntityIn
   // public function getName() {
   //   return $this->get('name')->value;
   // }
-
   // /**
   //  * {@inheritdoc}
   //  */
@@ -92,11 +92,38 @@ class ConstituentEntity extends ContentEntityBase implements ConstituentEntityIn
   public static function baseFieldDefinitions(EntityTypeInterface $entityType) {
     $fields = parent::baseFieldDefinitions($entityType);
 
-    $fields['name'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Name'))
-      ->setDescription(t('The name of the Constituent entity.'))
+    $fields['title'] = BaseFieldDefinition::create('list_string')
+      ->setLabel(t('Title'))
+      ->setDescription(t('The title of the Constituent.'))
       ->setSettings([
-        'max_length' => 50,
+        'allowed_values' => [
+          'Mr.' => 'Mr.',
+          'Ms.' => 'Ms.',
+          'Mrs.' => 'Mrs.',
+          'Miss' => 'Miss',
+          'Dr.' => 'Dr.',
+        ],
+        'text_processing' => 0,
+      ])
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'options_select',
+        'weight' => -4,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setRequired(FALSE);
+
+    $fields['firstname'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('First Name'))
+      ->setDescription(t('The first name of the Constituent.'))
+      ->setSettings([
+        'max_length' => 150,
         'text_processing' => 0,
       ])
       ->setDefaultValue('')
@@ -107,6 +134,157 @@ class ConstituentEntity extends ContentEntityBase implements ConstituentEntityIn
       ])
       ->setDisplayOptions('form', [
         'type' => 'string_textfield',
+        'weight' => -4,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setRequired(FALSE);
+
+    $fields['middlename'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Middle Name'))
+      ->setDescription(t('The middle name of the Constituent.'))
+      ->setSettings([
+        'max_length' => 150,
+        'text_processing' => 0,
+      ])
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => -4,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setRequired(FALSE);
+
+    $fields['lastname'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Last Name'))
+      ->setDescription(t('The last name of the Constituent.'))
+      ->setSettings([
+        'max_length' => 150,
+        'text_processing' => 0,
+      ])
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => -4,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setRequired(FALSE);
+
+    $fields['username'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Last Name'))
+      ->setDescription(t('The username of the Constituent.'))
+      ->setSettings([
+        'max_length' => 150,
+        'text_processing' => 0,
+      ])
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => -4,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setRequired(FALSE);
+
+    $fields['gender'] = BaseFieldDefinition::create('list_string')
+      ->setLabel(t('Gender'))
+      ->setDescription(t('The gender of the Constituent.'))
+      ->setSettings([
+        'allowed_values' => [
+          'Male' => 'Male',
+          'Female' => 'Female',
+          'I prefer not to say' => 'I prefer not to say',
+          'Other' => 'Other',
+        ],
+        'text_processing' => 0,
+      ])
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'options_select',
+        'weight' => -4,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setRequired(FALSE);
+
+    $fields['marital_status'] = BaseFieldDefinition::create('list_string')
+      ->setLabel(t('Marital Status'))
+      ->setDescription(t('The marital status of the Constituent.'))
+      ->setSettings([
+        'allowed_values' => [
+          'Single' => 'Single',
+          'Married' => 'Married',
+          'Divorced' => 'Divorced',
+          'Widowed' => 'Widowed',
+        ],
+        'text_processing' => 0,
+      ])
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'options_select',
+        'weight' => -4,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setRequired(FALSE);
+
+    $fields['address'] = BaseFieldDefinition::create('address')
+      ->setLabel(t('Address'))
+      ->setDescription(t('The Constituent address.'))
+      ->setCardinality(1)
+      ->setRequired(FALSE)
+      ->setSetting('field_overrides', [
+        'givenName' => ['override' => FieldOverride::HIDDEN],
+        'additionalName' => ['override' => FieldOverride::HIDDEN],
+        'familyName' => ['override' => FieldOverride::HIDDEN],
+        'organization' => ['override' => FieldOverride::HIDDEN],
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'address_default',
+        'weight' => 4,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+    $fields['email'] = BaseFieldDefinition::create('email')
+      ->setLabel(t('Email'))
+      ->setDescription(t('The Constituent email address.'))
+      ->setDefaultValue('')
+      // ->addConstraint('ContactEmailUnique')
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'email_default',
         'weight' => -4,
       ])
       ->setDisplayConfigurable('form', TRUE)
