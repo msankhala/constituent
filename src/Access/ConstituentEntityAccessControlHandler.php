@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\constituent;
+namespace Drupal\constituent\Access;
 
 use Drupal\Core\Entity\EntityAccessControlHandler;
 use Drupal\Core\Entity\EntityInterface;
