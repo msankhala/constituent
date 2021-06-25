@@ -27,6 +27,7 @@ use CommerceGuys\Addressing\AddressFormat\FieldOverride;
  *       "add" = "Drupal\constituent\Form\ConstituentEntityForm",
  *       "edit" = "Drupal\constituent\Form\ConstituentEntityForm",
  *       "delete" = "Drupal\constituent\Form\ConstituentEntityDeleteForm",
+ *       "settings" = "Drupal\constituent\Form\ConstituentEntitySettingsForm",
  *     },
  *     "route_provider" = {
  *       "html" = "Drupal\constituent\Routing\ConstituentEntityHtmlRouteProvider",
@@ -40,8 +41,8 @@ use CommerceGuys\Addressing\AddressFormat\FieldOverride;
  *   entity_keys = {
  *     "id" = "id",
  *     "uuid" = "uuid",
+ *     "label" = "firstname",
  *     "langcode" = "langcode",
- *     "published" = "status",
  *   },
  *   links = {
  *     "canonical" = "/admin/constituents/constituent/{constituent}",
@@ -183,7 +184,7 @@ class ConstituentEntity extends ContentEntityBase implements ConstituentEntityIn
       ->setRequired(FALSE);
 
     $fields['username'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Last Name'))
+      ->setLabel(t('Username'))
       ->setDescription(t('The username of the Constituent.'))
       ->setSettings([
         'max_length' => 150,
@@ -280,7 +281,7 @@ class ConstituentEntity extends ContentEntityBase implements ConstituentEntityIn
       // ->addConstraint('ContactEmailUnique')
       ->setDisplayOptions('view', [
         'label' => 'above',
-        'type' => 'string',
+        'type' => 'string_basic',
         'weight' => -4,
       ])
       ->setDisplayOptions('form', [
