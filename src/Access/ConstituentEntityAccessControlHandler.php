@@ -23,12 +23,9 @@ class ConstituentEntityAccessControlHandler extends EntityAccessControlHandler {
     switch ($operation) {
 
       case 'view':
-
-        // if (!$entity->isPublished()) {
+        // If (!$entity->isPublished()) {
         //   return AccessResult::allowedIfHasPermission($account, 'view unpublished constituent entities');
-        // }
-
-
+        // }.
         return AccessResult::allowedIfHasPermission($account, 'view constituent entities');
 
       case 'update':
@@ -50,6 +47,5 @@ class ConstituentEntityAccessControlHandler extends EntityAccessControlHandler {
   protected function checkCreateAccess(AccountInterface $account, array $context, $entity_bundle = NULL) {
     return AccessResult::allowedIfHasPermission($account, 'add constituent entities');
   }
-
 
 }
