@@ -28,10 +28,10 @@ class ConstituentEntityListBuilder extends EntityListBuilder {
    */
   public function buildRow(EntityInterface $entity) {
     $row = [];
-    /* @var \Drupal\constituent\Entity\ConstituentEntity $entity */
-    $row['id'] = $entity->id();
+    /** @var \Drupal\constituent\Entity\ConstituentEntity $entity */
+    $row['id'] = $entity->toLink($entity->id());
     $row['name'] = Link::createFromRoute(
-      $entity->label(),
+      $entity->get('firstname')->value . ' ' . $entity->get('lastname')->value,
       'entity.constituent.edit_form',
       ['constituent' => $entity->id()]
     );
