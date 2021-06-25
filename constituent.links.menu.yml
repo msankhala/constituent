@@ -13,8 +13,8 @@ entity.constituent.collection:
   parent: constituent.structure
   weight: 100
 
-# constituent.admin.structure.settings:
-#   title: 'Constituent settings'
-#   description: 'Configure Constituent entities'
-#   route_name: constituent.settings
-#   parent: system.admin_structure
+entity.constituent.settings:
+  title: 'Constituent settings'
+  description: 'Configure Constituent entities'
+  route_name: constituent.settings
+  parent: constituent.structure

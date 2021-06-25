@@ -7,3 +7,11 @@ constituent.structure:
     _title: 'Constituents (Legacy)'
   requirements:
     _permission: 'administer constituent entities'
+
+constituent.settings:
+  path: '/admin/constituents/settings'
+  defaults:
+    _form: '\Drupal\constituent\Form\ConstituentEntitySettingsForm'
+    _title: 'Settings'
+  requirements:
+    _permission: 'administer constituent entities'
