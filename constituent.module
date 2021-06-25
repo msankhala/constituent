@@ -27,9 +27,10 @@ function constituent_help($route_name, RouteMatchInterface $route_match) {
  * Implements hook_theme().
  */
 function constituent_theme() {
-  return [
-    'constituent' => [
-      'render element' => 'children',
-    ],
+  $theme = [];
+  $theme['constituent'] = [
+    'render element' => 'elements',
+    'file' => 'constituent.page.inc',
   ];
+  return $theme;
 }
